@@ -14,14 +14,6 @@ install: ## поставить зависимости
 dev: ## запустить для разработки
 	php -S 127.0.0.1:8080 -t serve
 
-.PHONY: test
-test: ## тесты
-	@echo "тестов нет"
-
-.PHONY: lint
-lint: ## статический анализ
-	@echo "линтера нет"
-
 .PHONY: build
 build: ## сборка
 	GITHUB_TOKEN=$$(gh auth token) php bin/build.php
