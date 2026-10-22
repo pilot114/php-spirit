@@ -1,6 +1,6 @@
 <?php
 
-include_once dirname(__DIR__) . '/vendor/autoload.php';
+include_once __DIR__ . '/../vendor/autoload.php';
 
 $count = 1000;
 
