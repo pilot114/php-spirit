@@ -1,6 +1,6 @@
 <?php
 
-include_once './vendor/autoload.php';
+include_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $count = 1000;
 
@@ -16,6 +16,7 @@ foreach (getPackages($count) as $i => $package) {
     $top[] = $package;
     echo "$i\n";
 }
+
 file_put_contents($popularFile, json_encode($top, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
 // 2

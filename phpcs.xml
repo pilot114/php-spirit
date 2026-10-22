@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ruleset name="php-spirit">
+    <description>Стиль кода php-spirit: PSR-12, как в pretty-php</description>
+
+    <file>src</file>
+    <file>bin</file>
+
+    <arg value="p"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <rule ref="PSR12"/>
+
+    <!-- Длинные строки — предупреждение, а не ошибка: в коде много текстов по-русски,
+         их не переносят. Предупреждения видны в отчёте, но check не роняют. -->
+    <config name="ignore_warnings_on_exit" value="1"/>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- Скрипт и файл функций: объявляют и сразу выполняют. -->
+    <rule ref="PSR1.Files.SideEffects"><severity>0</severity></rule>
+    <!-- Методы Report названы ровно как поля composer.json (prefer_stable, include_path):
+         их зовут по имени поля. -->
+    <rule ref="PSR1.Methods.CamelCapsMethodName"><exclude-pattern>src/functions.php</exclude-pattern></rule>
+    <!-- Весь код — один файл функций, подключаемый через autoload.files. -->
+    <rule ref="PSR1.Classes.ClassDeclaration"><exclude-pattern>src/functions.php</exclude-pattern></rule>
+</ruleset>

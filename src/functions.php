@@ -7,23 +7,25 @@ function getPackages($limit = 15): \Generator
     $url = 'https://packagist.org/explore/popular.json?per_page=100';
     $yielded = 0;
 
-    while(true) {
+    while (true) {
         $data = json_decode(file_get_contents($url), true);
         if (empty($data['packages'])) {
             return;
         }
+
         $url = $data['next'];
         foreach ($data['packages'] as $package) {
             if ($yielded >= $limit) {
                 return;
             }
+
             yield $package;
             $yielded++;
         }
     }
 }
 
-function composerDataGenerator(int $count, string $dir) : \Generator
+function composerDataGenerator(int $count, string $dir): \Generator
 {
     $github = new Client();
     $github->authenticate(getenv('GITHUB_TOKEN'), null, AuthMethod::ACCESS_TOKEN);
@@ -54,7 +56,6 @@ function composerDataGenerator(int $count, string $dir) : \Generator
 
             $fileServer = str_replace('github.com', 'raw.githubusercontent.com', $repo);
             $composerUrl = "$fileServer/$mainBranchName/composer.json";
-
         } elseif (str_contains($repo, 'gitlab.com/')) {
             $gitlabRepoName = explode('gitlab.com/', $repo)[1];
             [$namespace, $projectName] = explode('/', $gitlabRepoName);
@@ -71,15 +72,16 @@ function composerDataGenerator(int $count, string $dir) : \Generator
                     break;
                 }
             }
+
             if ($projectId === null) {
                 echo "Project not found.\n";
                 exit;
             }
+
             $project = $gitlab->projects()->show($projectId);
             $mainBranchName = $project['default_branch'];
 
             $composerUrl = "$repo/-/raw/$mainBranchName/composer.json";
-
         } else {
             dump($packageName);
             dump($repo);
@@ -91,6 +93,7 @@ function composerDataGenerator(int $count, string $dir) : \Generator
             dump("failed load $composerUrl");
             die();
         }
+
         mkdir($fullDir, recursive: true);
         file_put_contents("$fullDir/composer.json", json_encode($composerData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
@@ -108,15 +111,18 @@ function build(array $results, string $dir): array
             dump('project without composer.json in root: ' . $result['name']);
             continue;
         }
+
         $composer = json_decode(file_get_contents($composerFile), true);
         if (!$composer) {
             dump(sprintf('error composer.json: %s - %s', $result['name'], json_last_error_msg()));
             continue;
         }
+
         foreach ($composer as $key => $value) {
             $stats[$key][$result['name']] = base64_encode(json_encode($value));
         }
     }
+
     return $stats;
 }
 
@@ -125,6 +131,7 @@ function build(array $results, string $dir): array
 class Field
 {
     public int $count = 0;
+
     public array $data = [];
 
     public function __construct(
@@ -142,6 +149,7 @@ class Field
 class Report
 {
     protected array $data = [];
+
     protected array $packages = [];
 
     // for output
@@ -165,6 +173,7 @@ class Report
             $methodName = str_replace('-', '_', $field);
             $result['composerFields'][$field] = (array) $this->$methodName($packages);
         }
+
         file_put_contents($path, json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
 
@@ -219,23 +228,24 @@ class Report
         dump("Нестандартных ключей: $countNonStandardKeys");
 
         $this->nonStandardKeys = array_map(
-            fn($x) => array_map(
-                fn($y) => json_decode(base64_decode($y), true),
+            fn($x): array => array_map(
+                fn($y): mixed => json_decode(base64_decode($y), true),
                 $x
             ),
             array_filter(
                 $this->data,
-                fn($key) => in_array($key, $nonStandardKeys), ARRAY_FILTER_USE_KEY
+                fn($key): bool => in_array($key, $nonStandardKeys),
+                ARRAY_FILTER_USE_KEY
             )
         );
 
         $countStandardComposerKeys = count($standardComposerKeys);
         dump("Стандартных ключей: $countStandardComposerKeys");
 
-        $this->data = array_filter($this->data, fn($key) => !in_array($key, $nonStandardKeys), ARRAY_FILTER_USE_KEY);
+        $this->data = array_filter($this->data, fn($key): bool => !in_array($key, $nonStandardKeys), ARRAY_FILTER_USE_KEY);
 
         // sort by popularity
-        uasort($this->data, fn($a, $b) => count($a) < count($b) ? 1 : -1);
+        uasort($this->data, fn($a, $b): int => count($a) < count($b) ? 1 : -1);
     }
 
     protected function head(string $dirComposerFiles): array
@@ -317,6 +327,7 @@ class Report
             [$vendor, $name] = explode('/', $data);
             $field->data[$vendor][] = $name;
         }
+
         return $field;
     }
 
@@ -332,6 +343,7 @@ class Report
             $newPackage = json_decode(base64_decode($data), true);
             $field->data[$package] = $newPackage;
         }
+
         return $field;
     }
 
@@ -350,6 +362,7 @@ class Report
             $archive = json_decode(base64_decode($data), true);
             $field->data[$package] = $archive['exclude'];
         }
+
         return $field;
     }
 
@@ -380,10 +393,12 @@ class Report
                     $field->data[$author['name']][0][] = $author['email'];
                     $field->data[$author['name']][0] = array_unique($field->data[$author['name']][0]);
                 }
+
                 if (isset($author['homepage'])) {
                     $field->data[$author['name']][1][] = trim(str_replace('http://', 'https://', $author['homepage']), '/');
                     $field->data[$author['name']][1] = array_unique($field->data[$author['name']][1]);
                 }
+
                 $field->data[$author['name']][2][$package] = $author['role'] ?? 'Developer';
             }
         }
@@ -405,6 +420,7 @@ class Report
                 $field->data[$type][$package][] = $config;
             }
         }
+
         return $field;
     }
 
@@ -419,6 +435,7 @@ class Report
             $bin = json_decode(base64_decode($data), true);
             $field->data[$package] = $bin;
         }
+
         return $field;
     }
 
@@ -436,6 +453,7 @@ class Report
                 $field->data[$optionName][$package] = $option;
             }
         }
+
         return $field;
     }
 
@@ -447,6 +465,7 @@ class Report
             $conflict = json_decode(base64_decode($data), true);
             $field->data[$package] = $conflict;
         }
+
         return $field;
     }
 
@@ -464,6 +483,7 @@ class Report
                 $field->data[$optionName][$package] = $option;
             }
         }
+
         return $field;
     }
 
@@ -476,11 +496,12 @@ class Report
 
         foreach ($input as $package => $data) {
             $funding = json_decode(base64_decode($data), true);
-            foreach ($funding as $type => $fund) {
+            foreach ($funding as $fund) {
                 $field->data[$fund['type']] ??= [];
                 $field->data[$fund['type']][$package] = $fund['url'];
             }
         }
+
         return $field;
     }
 
@@ -495,6 +516,7 @@ class Report
                 $field->data[$keyword][] = $package;
             }
         }
+
         return $field;
     }
 
@@ -507,11 +529,13 @@ class Report
             if (!is_array($license)) {
                 $license = [$license];
             }
+
             foreach ($license as $item) {
                 $field->data[$item] ??= [];
                 $field->data[$item][] = $package;
             }
         }
+
         return $field;
     }
 
@@ -524,6 +548,7 @@ class Report
             $field->data[$stability] ??= [];
             $field->data[$stability][] = $package;
         }
+
         return $field;
     }
 
@@ -540,10 +565,12 @@ class Report
                 if (!isset($repository['type'])) {
                     continue;
                 }
+
                 $field->data[$repository['type']][$package] ??= [];
                 $field->data[$repository['type']][$package][] = $repository['package'] ?? $repository['url'];
             }
         }
+
         return $field;
     }
 
@@ -558,6 +585,7 @@ class Report
                 $field->data[$dep][$version][] = $package;
             }
         }
+
         return $field;
     }
 
@@ -573,13 +601,14 @@ class Report
     {
         $field = new Field('suggest', 'suggest', $input);
 
-        foreach ($input as $package => $data) {
+        foreach ($input as $data) {
             $suggest = json_decode(base64_decode($data), true);
             foreach ($suggest as $pack => $desc) {
                 $field->data[$pack] ??= [];
                 $field->data[$pack][] = $desc;
             }
         }
+
         return $field;
     }
 
@@ -594,6 +623,7 @@ class Report
                 $field->data[$type][$package] = $item;
             }
         }
+
         return $field;
     }
 
@@ -606,6 +636,7 @@ class Report
             $field->data[$type] ??= [];
             $field->data[$type][] = $package;
         }
+
         return $field;
     }
 }

@@ -1,0 +1,27 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - bin
+
+    checkMissingCallableSignature: true
+    checkUninitializedProperties: true
+    checkDynamicProperties: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkImplicitMixed: true
+    checkBenevolentUnionTypes: true
+
+    reportMaybes: true
+    reportStaticMethodSignatures: true
+    reportMagicMethods: true
+    reportMagicProperties: true
+    reportUnmatchedIgnoredErrors: true
+    treatPhpDocTypesAsCertain: false
+
+    phpVersion: 80400
+
+    parallel:
+        maximumNumberOfProcesses: 4

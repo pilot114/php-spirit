@@ -1,0 +1,553 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: bin/build.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/build.php
+
+		-
+			message: '#^Parameter \#1 \$results of function build expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/build.php
+
+		-
+			message: '#^Part \$i \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: bin/build.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 14
+			path: src/functions.php
+
+		-
+			message: '#^Binary operation "\." between ''project without…'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Call to an undefined method Github\\Api\\AbstractApi\:\:show\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Call to function base64_decode\(\) requires parameter \#2 to be set\.$#'
+			identifier: function.strict
+			count: 19
+			path: src/functions.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 11
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''default_branch'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''email'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''exclude'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''homepage'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''id'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 13
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''next'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''package'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''packages'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''path_with_namespace'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''role'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''type'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset ''url'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset \(int\|string\) on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 7
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset 0 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset 1 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset 2 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot access offset mixed on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Cannot call method getRepository\(\) on array\|Packagist\\Api\\Result\\Package\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Function build\(\) has parameter \$results with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Function build\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Function getPackages\(\) has parameter \$limit with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Field\:\:__construct\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:abandoned\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:archive\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:authors\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:autoload\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:autoload_dev\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:bin\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:config\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:conflict\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:description\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:extra\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:funding\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:head\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:homepage\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:include_path\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:keywords\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:license\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:minimum_stability\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:name\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:prefer_stable\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:provide\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:readme\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:replace\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:repositories\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:require\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:require_dev\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:scripts\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:stability\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:suggest\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:support\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:type\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Method Report\:\:version\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, mixed given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_unique expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$filename of function file_get_contents expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 6
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$package of method Packagist\\Api\\Client\:\:get\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$project_id of method Gitlab\\Api\\Projects\:\:show\(\) expects int\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$string of function base64_decode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 19
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$string of function base64_encode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, \(array\<string\>\|string\) given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$tokenOrLogin of method Github\\Client\:\:authenticate\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#1 \$value of function count expects array\|Countable, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#2 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, \(int\|string\) given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Part \$mainBranchName \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Part \$packageName \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: src/functions.php
+
+		-
+			message: '#^Part \$result\[''name''\] \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 34
+			path: src/functions.php
+
+		-
+			message: '#^Property Field\:\:\$data type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Property Report\:\:\$data \(array\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Property Report\:\:\$data type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Property Report\:\:\$nonStandardKeys type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Property Report\:\:\$packages \(array\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Property Report\:\:\$packages type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/functions.php
+
+		-
+			message: '#^Variable method call on \$this\(Report\)\.$#'
+			identifier: method.dynamicName
+			count: 1
+			path: src/functions.php
